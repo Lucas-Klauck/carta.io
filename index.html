@@ -16,7 +16,6 @@
       overflow: hidden;
     }
 
-    /* brilhinhos no fundo */
     body::before {
       content: "";
       position: absolute;
@@ -33,8 +32,8 @@
     }
 
     .envelope {
-      width: 340px;
-      height: 240px;
+      width: 360px;
+      height: 280px; /* AUMENTADO */
       position: relative;
       cursor: pointer;
       animation: float 3s ease-in-out infinite;
@@ -77,30 +76,30 @@
       width: 100%;
       height: 100%;
       background: #fff;
-      padding: 25px;
+      padding: 22px; /* Ajustado */
       box-sizing: border-box;
       border-radius: 10px;
       text-align: center;
       opacity: 0;
-      transform: translateY(20px);
+      transform: translateY(25px);
       transition: all 1s ease;
       z-index: 4;
       position: absolute;
       display: flex;
       flex-direction: column;
-      justify-content: center;
+      overflow: auto; /* PERMITE CABER FRASES GRANDES */
     }
 
     .letter h2 {
       color: #ff4d6d;
-      font-size: 1.8rem;
-      margin-bottom: 12px;
+      font-size: 1.7rem;
+      margin-bottom: 15px;
     }
 
     .letter p {
       color: #444;
-      font-size: 1.1rem;
-      margin: 6px 0;
+      font-size: 1rem; /* LEVEMENTE MENOR */
+      margin: 5px 0;
       line-height: 1.45;
     }
 
@@ -111,10 +110,9 @@
 
     .open .letter {
       opacity: 1;
-      transform: translateY(-20px);
+      transform: translateY(-10px); /* Ajustado */
     }
 
-    /* corações */
     .heart {
       position: fixed;
       bottom: -30px;
@@ -137,11 +135,13 @@
     <div class="base"></div>
     <div class="flap"></div>
     <div class="letter">
-      <h2>Oi, você 💖</h2>
-      <p>Quero que saiba que você é muito especial pra mim.</p>
-      <p>Seu sorriso ilumina meus dias e seu carinho aquece meu coração.</p>
-      <p>Com todo meu amor,</p>
-      <p><strong>Lucas</strong></p>
+      <h2>Oi, Dyovanna</h2>
+
+      <p>Faz um tempo que estou criando coragem pra dizer…</p>
+      <p>Eu gosto de você. Te acho incrível, especial e única.</p>
+      <p>Queria saber se você se importaria em me dar uma chance?</p>
+      <p>Não precisa responder agora se não quiser… eu vou entender.</p>
+
     </div>
   </div>
 
@@ -152,9 +152,7 @@
       if (opened) return;
       opened = true;
 
-      const env = document.querySelector('.envelope');
-      env.classList.add('open');
-
+      document.querySelector('.envelope').classList.add('open');
       startHearts();
     }
 
@@ -169,7 +167,6 @@
         heart.style.animationDuration = (Math.random() * 3 + 4) + "s";
 
         document.body.appendChild(heart);
-
         setTimeout(() => heart.remove(), 7000);
       }, 450);
     }
